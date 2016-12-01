@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Floristería HORTENSIA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/estilos.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Sumana:400,700" rel="stylesheet"> 
+    </head>
+   
+    <body>
+        <div class="container"> 
+            <header>
+                <div class="cabecera">
+                    <h1>FLORISTERIA HORTENSIA</h1>
+                    <img src="imagenes/logo.png" class="img-rounded">
+                </div>
+            </header>
+            <br/>
+          
+        <!--MENSAJES-->
+
+    <form method="POST" action="pedido_flores.php"  target="_blank" class="form-horizontal">
+
+            <fieldset id="mensajes"><legend>Mensajes</legend>
+
+            <div class="radio">
+                <label><input type="radio" name="mensajes1" value="perdoname" id="mensajes1" />Perdóname</label><br/>
+                <label><input type="radio" name="mensajes2" value="buen viaje" id="mensajes2" />¡¡Buen viaje!!</label><br/>
+                <label><input type="radio" name="mensajes3" value="felicidades" id="mensajes3" />¡¡¡FELICIDADES!!!</label><br/>
+                <label><input type="radio" name="mensajes4" value="mejorate" id="mensajes4" />¡¡¡Qué te mejores!!!</label><br/>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" name="txMensaje" value="ok" id="check1" onclick="personalizado();" /> Mensaje personalizado</label>
+            </div>
+
+            <textarea placeholder="Máximo 200 caracteres" maxlength="200" id="txMensaje" cols="75" rows="4" ></textarea>
+            
+            </fieldset>
+            <br/><br/>
+
+        <!--DIRECCION DE FACTURACION-->
+            
+            <fieldset id="facturacion"><legend>Dirección de Facturación</legend>
+        <form class="form-horizontal">    
+            <div class="form-group">
+                <label for="nombre" class="control-label col-md-1"> Nombre: </label>
+                <div class="col-md-6">
+                    <input type="text" id="nombre" class="form-control" name="nombre" maxlength="30" placeholder="Max. 30 caracteres"
+                    required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="apellidos" class="control-label col-md-1"> Apellidos: </label>
+                <div class="col-md-6">
+                    <input type="text" id="apellidos" class="form-control" maxlength="60" placeholder="Max. 60 caracteres" 
+                    name="apellidos" required /> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="domicilio" class="control-label col-md-1"> Dirección: </label>
+                <div class="col-md-6">
+                    <input type="text" id="domicilio" class="form-control" maxlength="100" placeholder="Max. 100 caracteres"
+                    name="domicilio" required /> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cpostal" class="control-label col-md-1"> CP: </label>
+                <div class="col-md-6">
+                    <input type="text" maxlength="5" id="cpostal" class="form-control" placeholder="Max. 5 números" name="cp" 
+                    required />
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="provincias" class="control-label col-md-1"> Provincia: </label> 
+                <div class="col-md-6">
+                    <select id="provincias" class="form-control">
+                        <option value="almeria"> Almería </option>
+                        <option value="cadiz"> Cádiz </option>
+                        <option value="cordoba"> Córdoba </option>
+                        <option value="granada"> Granada </option>
+                        <option value="jaen"> Jaén </option>
+                        <option value="huelva"> Huelva </option>
+                        <option value="malaga"> Málaga </option>
+                        <option value="sevilla"> Sevilla </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="ciudad" class="control-label col-md-1"> Ciudad: </label>
+                <div class="col-md-6">
+                    <input type="text" id="ciudad" class="form-control" maxlength="50" placeholder="Localidad / Ciudad (Max. 50 caracteres)" name="ciudad" />
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="telefono" class="control-label col-md-1"> Teléfono: </label>
+                <div class="col-md-6">
+                    <input type="tel" id="telefono" class="form-control" maxlength="20" placeholder="Max. 20 números" 
+                    name="telefono" /> 
+                </div>
+            </div>
+        </form>
+            </fieldset>
+            <br/><br/>
+
+        <!---DIRECCION DE ENVIO-->    
+            
+            <fieldset id="envio"><legend>Dirección de Envío</legend>
+            <div class="checkbox">
+                <label><input type="checkbox" name="envio" id="check2" onclick="copiarFactura();" /><strong><em> Utilizar la misma direccón de facturación</em></strong></label>
+            </div>
+            <br/>
+        <form class="form-horizontal">    
+            <div class="form-group">
+                <label for="nombre2" class="control-label col-md-1"> Nombre: </label>
+                <div class="col-md-6">
+                    <input type="text" id="nombre2" class="form-control" name="nombre2" maxlength="30" placeholder="Max. 30 caracteres"
+                    required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="apellidos2" class="control-label col-md-1"> Apellidos: </label>
+                <div class="col-md-6">
+                    <input type="text" id="apellidos2" class="form-control" maxlength="60" placeholder="Max. 60 caracteres" 
+                    name="apellidos2" required /> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="domicilio2" class="control-label col-md-1"> Dirección: </label>
+                <div class="col-md-6">
+                    <input type="text" id="domicilio2" class="form-control" maxlength="100" placeholder="Max. 100 caracteres"
+                    name="domicilio2" required /> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cpostal2" class="control-label col-md-1"> CP: </label>
+                <div class="col-md-6">
+                    <input type="text" maxlength="5" id="cpostal2" class="form-control" placeholder="Max. 5 números" name="cp2" 
+                    required />
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="provincias2" class="control-label col-md-1"> Provincia: </label> 
+                <div class="col-md-6">
+                    <select id="provincias2" class="form-control">
+                        <option value="almeria"> Almería </option>
+                        <option value="cadiz"> Cádiz </option>
+                        <option value="cordoba"> Córdoba </option>
+                        <option value="granada"> Granada </option>
+                        <option value="jaen"> Jaén </option>
+                        <option value="huelva"> Huelva </option>
+                        <option value="malaga"> Málaga </option>
+                        <option value="sevilla"> Sevilla </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="ciudad2" class="control-label col-md-1"> Ciudad: </label>
+                <div class="col-md-6">
+                    <input type="text" id="ciudad2" class="form-control" maxlength="50" placeholder="Localidad / Ciudad (Max. 50 caracteres)" name="ciudad2" />
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="telefono2" class="control-label col-md-1"> Teléfono: </label>
+                <div class="col-md-6">
+                    <input type="tel" id="telefono2" class="form-control" maxlength="20" placeholder="Max. 20 números" 
+                    name="telefono2" /> 
+                </div>
+            </div>
+        </form>
+            </fieldset>
+            <br/><br/>
+        <!--FECHA DE ENVIO-->
+            
+            <fieldset id="fechaenvio"><legend>Fecha de Envío</legend>
+        <form class="form-horizontal">
+            <div class="form-group">    
+                <label for="mesEntrega" class="control-label col-md-1"> Mes:</label>
+                <div class="col-md-2">
+                    <select id="mesEntrega" class="form-control input-sm" onchange="actualizarDias();" required>
+                        <option value="1"> Enero </option>                    
+                        <option value="2"> Febrero </option>
+                        <option value="3"> Marzo </option>
+                        <option value="4"> Abril </option>
+                        <option value="5"> Mayo </option>
+                        <option value="6"> Junio </option>
+                        <option value="7"> Julio </option>
+                        <option value="8"> Agosto </option>
+                        <option value="9"> Septiembre </option>
+                        <option value="10"> Octubre </option>
+                        <option value="11"> Noviembre </option>
+                        <option value="12"> Diciembre </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="diaEntrega" class="control-label col-md-1"> Día:</label>
+                <div class="col-md-2">
+                    <select id="diaEntrega" class="form-control input-sm" required>
+                    </select> 
+                </div>               
+            </div>
+            <div class="form-group">
+                <label for="yearEntrega" class="control-label col-md-1"> Año:</label>
+                <div class="col-md-2">
+                    <select id="yearEntrega" class="form-control input-sm" onchange="actualizarDias();">
+                        <option value="2016"> 2016</option>
+                        <option value="2017"> 2017</option>
+                        <option value="2018"> 2018</option>
+                        <option value="2019"> 2019</option>
+                        <option value="2020"> 2020</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+            </fieldset>
+            <br/><br/>
+
+        <!--FORMA DE PAGO-->
+            
+            <fieldset id="pago"><legend> Forma de Pago</legend>
+            <div class="radio radiocard">
+                <label><input type="radio" name="tarjeta" value="visa"/> Visa</label>
+                <img class="img-thumbnail" src="imagenes/visa.png" height="50" width="70">
+                <label><input type="radio" name="tarjeta" value="mastercard"/> Mastercard</label>
+                <img class="img-thumbnail" src="imagenes/mastercard.png" height="50" width="70">
+                <label><input type="radio" name="tarjeta" value="american"/> American Express</label>
+                <img class="img-thumbnail" src="imagenes/american.png" height="50" width="70">
+            </div>
+        <form class="form-horizontal">
+            <div class="form-group">    
+                <label for="numerotarjeta" class="control-label col-md-2"> Número de Tarjeta </label>
+                <div class="col-md-2">
+                    <input type="text" id="numerotarjeta" class="form-control" name="numerotarjeta" maxlength="16" 
+                        placeholder="Max. 16 números" required />
+                </div>
+            </div>        
+            <div class="form-group">
+                <label for="mescaducidad" class="control-label col-md-1"> Mes </label>
+                <div class="col-md-3">
+                    <select id="mescaducidad" class="form-control input-sm" required>
+                        <option value="enero"> Enero </option>                    
+                        <option value="febrero"> Febrero </option>
+                        <option value="marzo"> Marzo </option>
+                        <option value="abril"> Abril </option>
+                        <option value="mayo"> Mayo </option>
+                        <option value="junio"> Junio </option>
+                        <option value="julio"> Julio </option>
+                        <option value="agosto"> Agosto </option>
+                        <option value="septiembre"> Septiembre </option>
+                        <option value="octubre"> Octubre </option>
+                        <option value="noviembre"> Noviembre </option>
+                        <option value="diciembre"> Diciembre </option>
+                    </select> 
+                </div>
+            </div>
+            <div class="form-group">    
+                <label for="añocaducidad" class="control-label col-md-1"> Año </label>
+                <div class="col-md-3">
+                    <select id="añocaducidad" class="form-control input-sm" required>
+                        <option value="2016"> 2016</option>
+                        <option value="2017"> 2017</option>
+                        <option value="2018"> 2018</option>
+                        <option value="2019"> 2019</option>
+                        <option value="2020"> 2020</option>
+                        <option value="2021"> 2021</option>
+                        <option value="2022"> 2022</option>
+                        <option value="2023"> 2023</option>
+                        <option value="2024"> 2024</option>
+                        <option value="2025"> 2025</option>
+                        <option value="2026"> 2026</option>
+                        <option value="2027"> 2027</option>
+                        <option value="2028"> 2028</option>
+                        <option value="2029"> 2029</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cvv" class="control-label col-md-1"> CVV: </label>
+                <div class="col-md-2">
+                    <input type="text" id="cvv" class="form-control" name="cvv" maxlength="3" placeholder="Max. 3 caracteres" 
+                        required />
+                </div>
+                <abbr title="Hace referencia a las 3 cifras de la parte posterior de la tarjeta de crédito"><img src="imagenes/question.png" /></abbr>
+            </div>
+        </form>
+            </fieldset>
+            <br/><br/>
+
+        <!--CREAR CUENTA-->
+            
+            <fieldset id="cuenta"><legend> Crear Cuenta</legend>
+                <h5><strong>Para poder iniciar el pedido debe crear una cuenta<strong></h5><br/>
+    <form method="POST" action="registro.php" target="_blank">
+            <div class="input-group col-md-6">    
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="email" id="usuario" class="form-control" name="usuario" maxlength="50" placeholder="E-Mail (Max. 50 caracteres)" />
+            </div>
+            <br/> 
+            <div class="input-group col-md-6">   
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" id="password1" class="form-control" name="password" minlength="6" maxlength="12" 
+                    placeholder="Contraseña (De 6 a 12 caracteres)" />
+            </div>
+            <br/> 
+            <div class="input-group col-md-6">    
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" id="password2" class="form-control" name="password" minlength="6" maxlength="12" 
+                    placeholder="Repite Contraseña" />
+            </div>
+            <br/>
+                <button type="submit" value="login"  class="btn btn-info" onclick="validar()">Crear cuenta</button><br/><br/>
+    </form>
+            </fieldset>
+
+                <button type="submit" value="enviar" onclick="enviar();" class="btn btn-danger center-block"> Enviar Pedido</button>
+    </form>
+    <footer class="footer">
+        <div class="rrss">
+            <img alt="redes sociales" src="imagenes/in.png" height="30" width="30" />
+            <img alt="redes sociales" src="imagenes/fb.png" height="30" width="30" />
+            <img alt="redes sociales" src="imagenes/yt.png" height="30" width="30" />
+            <img alt="redes sociales" src="imagenes/tw.png" height="30" width="30" />
+            <img alt="redes sociales" src="imagenes/web.png" height="30" width="30" />
+        </div>
+        <div class="aviso">
+            <p> © Copyright 2016 ~ Floristeria Hortensia <img src="imagenes/logo.png" class="img-rounded"> | Política de Cookies‎ | Aviso Legal | floristeria_hortensia@contacto.com </p>
+        </div>
+    </footer>
+
+        </div>
+        <script src="js/floristeria.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
+
